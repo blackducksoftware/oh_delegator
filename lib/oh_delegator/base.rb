@@ -15,14 +15,12 @@ class OhDelegator
     end
 
     def method_missing(method_name, *args)
-      delegable_object.send(method_name)
+      delegable_object.send(method_name, *args)
     rescue
       super
     end
 
     class << self
-      delegate :has_many, to: :delegable_object
-
       def inherited(base)
         # Find an alternative like deconstantize
         delegable_name = base.to_s.slice(/^[^:]+/)
@@ -43,6 +41,12 @@ class OhDelegator
 
       def delegable_object
         @delegable_object
+      end
+
+      def method_missing(method_name, *args)
+        delegable_object.send(method_name, *args)
+      rescue
+        super
       end
     end
   end
