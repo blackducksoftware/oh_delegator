@@ -43,13 +43,7 @@ Delegators are more ideal as they comply with all three requirements of DRY. Als
 
 ## Usage
 
-The delegators can be placed in any folder.
-If one chooses to place the delegators inside an `app/delegators` folder, one
-needs to add the following to the application's environment file:
-
-```ruby
-config.autoload_paths += "#{ RAILS_ROOT }/app/delegators"
-```
+The delegators can be placed anywhere in your application's load path, the only requirement is that it must be nested under the delegated object.
 
 ```ruby
 # app/delegators/account/profile_delegator.rb
