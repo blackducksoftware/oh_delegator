@@ -1,14 +1,14 @@
 module OhDelegator
   module Delegable
-    def oh_delegators(*fields)
-      fields.each do |field|
-        define_method field do
-          instance_variable_name = "@#{ field }"
+    def oh_delegators(*attributes)
+      attributes.each do |attribute|
+        define_method attribute do
+          instance_variable_name = "@#{ attribute }"
           instance_variable = instance_variable_get(instance_variable_name)
 
           return instance_variable if instance_variable
 
-          klass = "#{ self.class.name }::#{ field.to_s.classify }".constantize
+          klass = "#{ self.class.name }::#{ attribute.to_s.classify }".constantize
           instance_variable_set(instance_variable_name, klass.new(self))
         end
       end
