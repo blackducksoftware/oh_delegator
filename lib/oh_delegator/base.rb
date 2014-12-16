@@ -16,7 +16,7 @@ module OhDelegator
 
     def method_missing(method_name, *args)
       delegable_object.send(method_name, *args)
-    rescue
+    rescue NoMethodError
       super
     end
 
@@ -45,7 +45,7 @@ module OhDelegator
 
       def method_missing(method_name, *args)
         delegable_object.send(method_name, *args)
-      rescue
+      rescue NoMethodError
         super
       end
     end
