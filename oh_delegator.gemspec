@@ -1,8 +1,9 @@
 $:.push File.expand_path('../lib', __FILE__)
+require 'oh_delegator/version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'oh_delegator'
-  gem.version       = '0.0.1'
+  gem.version       = OhDelegator::Version::STRING
   gem.authors       = ["BlackDuck Software"]
   gem.email         = ["info@blackducksoftware.com"]
   gem.summary       = %q{ActiveRecord model delegation}
