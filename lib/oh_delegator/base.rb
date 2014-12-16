@@ -1,4 +1,4 @@
-class OhDelegator
+module OhDelegator
   class Base
     def initialize(delegable)
       instance_variable_set("@#{ delegable_name }", delegable)

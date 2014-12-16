@@ -1,4 +1,4 @@
-class OhDelegator
+module OhDelegator
   module Delegable
     def assign_delegators(*fields)
       fields.each do |field|
