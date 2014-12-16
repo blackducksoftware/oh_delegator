@@ -65,7 +65,7 @@ end
 
 # app/models/account.rb
 class Account < ActiveRecord::Base
-  oh_delegators :profile
+  oh_delegators :profile_delegator
 end
 
 # app/controllers/accounts_controller.rb
