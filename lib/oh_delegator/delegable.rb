@@ -1,6 +1,6 @@
 module OhDelegator
   module Delegable
-    def assign_delegators(*fields)
+    def oh_delegators(*fields)
       fields.each do |field|
         define_method field do
           instance_variable_name = "@#{ field }"
