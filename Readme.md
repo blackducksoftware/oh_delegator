@@ -48,9 +48,11 @@ The delegators can be placed anywhere in your application's load path, the only 
 ```ruby
 # app/delegators/account/profile_delegator.rb
 class Account::ProfileDelegator < OhDelegator::Base
-  has_many :profiles
+  parent_scope do
+    has_many :profiles
 
-  validates :has_profile, inclusion: { in: [true, false] }
+    validates :has_profile, inclusion: { in: [true, false] }
+  end
 
   def active
     profiles.find_by(active: true)
@@ -70,7 +72,7 @@ end
 ...
 ```
 
-As we see, migrating code from an **ActiveRecord** model to a delegator is simply a matter of moving the code. This migration is even simpler than when using a **Concern**.
+As we see, migrating code from an **ActiveRecord** model to a delegator is as simple as migrating a concern.
 
 ## Extras
 

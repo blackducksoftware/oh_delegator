@@ -21,32 +21,18 @@ module OhDelegator
     end
 
     class << self
-      def inherited(base)
-        # Find an alternative like deconstantize
-        delegable_name = base.to_s.slice(/^[^:]+/)
-        base.set_delegable(delegable_name)
+      def parent_scope(&block)
+        delegable.class_exec(&block)
       end
 
       def delegable_name
-        delegable_object.to_s.underscore
-      end
-
-      protected
-
-      def set_delegable(delegable_name)
-        @delegable_object = delegable_name.constantize
+        @delegable_name ||= name.slice(/^[^:]+/)
       end
 
       private
 
-      def delegable_object
-        @delegable_object
-      end
-
-      def method_missing(method_name, *args)
-        delegable_object.send(method_name, *args)
-      rescue NoMethodError
-        super
+      def delegable
+        @delegable ||= delegable_name.constantize
       end
     end
   end
