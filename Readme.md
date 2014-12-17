@@ -43,7 +43,7 @@ Delegators are more ideal as they comply with all three requirements of DRY. Als
 
 ## Usage
 
-The delegators can be placed anywhere in your application's load path, the only requirement is that it must be nested under the delegated object.
+The delegators can be placed anywhere in your application's load path, the only requirement is that it must be nested under the delegable object.
 
 ```ruby
 # app/delegators/account/profile_delegator.rb
@@ -71,3 +71,18 @@ end
 ```
 
 As we see, migrating code from an **ActiveRecord** model to a delegator is simply a matter of moving the code. This migration is even simpler than when using a **Concern**.
+
+## Extras
+
+The delegable object will be available as an instance variable inside the delegator.
+
+```ruby
+# app/delegators/account/profile_delegator.rb
+class Account::ProfileDelegator < OhDelegator::Base
+  ...
+
+  def active
+    @account.profiles.find_by(active: true)
+  end
+end
+```
