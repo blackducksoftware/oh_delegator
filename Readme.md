@@ -6,7 +6,7 @@ From [Wikipedia](http://en.wikipedia.org/wiki/Don%27t_repeat_yourself):
 
 ## Delegators vs Concerns
 
-ActiveSupport::Concern is a convenient solution for splitting ActiveRecord models. It can serve as a single and authoritative feature representation, but it is ambigous. Consider the following example:
+ActiveSupport::Concern is a convenient solution for splitting ActiveRecord models. It can serve as a single and authoritative feature representation, but it is ambiguous. Consider the following example:
 
 ```ruby
 # app/models/concerns/account_profile.rb
@@ -37,7 +37,7 @@ end
 ...
 ```
 
-When viewing the controller, the location of `@account.active_profile` seems ambigous. The first thing that most developers would do is look at the `Account` model. Tools like ctags can help, but they have other limitations(e.g. cannot deal with duplicate method names in separate modules).
+When viewing the controller, the location of `@account.active_profile` seems ambiguous. The first thing that most developers would do is look at the `Account` model. Tools like ctags can help, but they have other limitations(e.g. cannot deal with duplicate method names in separate modules).
 
 Delegators are more ideal as they comply with all three requirements of DRY. Also, it makes way for editor plugins to accurately track source location. However it lacks any convenient wrapper like `ActiveSupport::Concern` for working with ActiveRecord. This gem serves to fill that gap.
 
