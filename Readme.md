@@ -73,3 +73,18 @@ end
 ```
 
 As we see, migrating code from an **ActiveRecord** model to a delegator is as simple as migrating a concern.
+
+## Extras
+
+The delegable object will be available inside the delegator.
+
+```ruby
+# app/delegators/account/profile_delegator.rb
+class Account::ProfileDelegator < OhDelegator::Base
+  ...
+
+  def create_profile
+    Profile.create(account: account)
+  end
+end
+```
