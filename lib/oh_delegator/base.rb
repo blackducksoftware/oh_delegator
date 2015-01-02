@@ -1,3 +1,5 @@
+require 'delegate'
+
 module OhDelegator
   class Base < SimpleDelegator
     extend ParentScope
