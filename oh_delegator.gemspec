@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["info@blackducksoftware.com"]
   gem.summary       = %q{ActiveRecord model delegation}
   gem.description   = %q{Use delegators just like concerns}
-  gem.homepage      = "https://bitbucket.org/notalex/oh_delegator"
+  gem.homepage      = "https://github.com/blackducksw/oh_delegator"
   gem.license       = "MIT"
 
   gem.files         = `git ls-files -z`.split("\x0")
