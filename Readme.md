@@ -43,7 +43,7 @@ Delegators are more ideal as they comply with all three requirements of DRY. Als
 
 ## Usage
 
-The delegators can be placed anywhere in your application's load path, the only requirement is that it must be nested under the delegable object.
+The delegators can be placed anywhere in your application's load path, the only requirement is that it must be nested under the delegatee object.
 
 ```ruby
 # app/delegators/account/profile_delegator.rb
@@ -76,7 +76,7 @@ As we see, migrating code from an **ActiveRecord** model to a delegator is as si
 
 ## Extras
 
-The delegable object will be available inside the delegator.
+The delegatee object will be available inside the delegator. The name is inferred from the `parent` scope.
 
 ```ruby
 # app/delegators/account/profile_delegator.rb
@@ -84,7 +84,7 @@ class Account::ProfileDelegator < OhDelegator::Base
   ...
 
   def create_profile
-    Profile.create(account: account)
+    Profile.create(account: account)         # Account::ProfileDelegator.parent.name.downcase == 'account'
   end
 end
 ```
