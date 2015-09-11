@@ -4,11 +4,10 @@ module OhDelegator
   class Base < SimpleDelegator
     extend ParentScope
 
-    def initialize(delegable)
-      super
-
-      define_singleton_method(delegable.class.name.underscore) do
-        @delegable ||= delegable
+    class << self
+      def inherited(subclass)
+        delegatee_name = subclass.parent.name.downcase
+        define_method(delegatee_name, -> { __getobj__ })
       end
     end
   end

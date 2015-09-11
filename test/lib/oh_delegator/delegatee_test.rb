@@ -1,9 +1,9 @@
 require 'test_helper'
 
-describe OhDelegator::Delegable do
+describe OhDelegator::Delegatee do
   it 'must add an oh_delegators method when extended' do
     class Person
-      extend OhDelegator::Delegable
+      extend OhDelegator::Delegatee
     end
 
     Person.methods.must_include :oh_delegators
@@ -17,7 +17,7 @@ describe OhDelegator::Delegable do
       end
 
       class User
-        extend OhDelegator::Delegable
+        extend OhDelegator::Delegatee
         oh_delegators :profile_core
       end
     end

@@ -19,7 +19,7 @@ describe OhDelegator::ParentScope do
     end
 
     class User
-      extend OhDelegator::Delegable
+      extend OhDelegator::Delegatee
       oh_delegators :profile_core
     end
   end
@@ -29,7 +29,7 @@ describe OhDelegator::ParentScope do
       User.class_name.must_be :present?
     end
 
-    it 'must be called using delegable\'s context' do
+    it 'must be called using delegatee\'s context' do
       User.class_name.must_equal 'User'
     end
   end

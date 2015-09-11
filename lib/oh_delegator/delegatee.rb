@@ -1,8 +1,8 @@
 module OhDelegator
-  module Delegable
+  module Delegatee
     def oh_delegators(*attributes)
       attributes.each do |attribute|
-        # Read the delegator class alongwith the delegable.
+        # Read the delegator class alongwith the delegatee.
         klass = "#{ name }::#{ attribute.to_s.classify }".constantize
 
         define_method attribute do

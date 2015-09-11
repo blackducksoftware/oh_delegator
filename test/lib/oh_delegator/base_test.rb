@@ -8,7 +8,7 @@ describe OhDelegator::Base do
     end
 
     class User
-      extend OhDelegator::Delegable
+      extend OhDelegator::Delegatee
       oh_delegators :profile_core
 
       def type
@@ -17,12 +17,12 @@ describe OhDelegator::Base do
     end
   end
 
-  it 'must make the delegable object available to the delegator' do
+  it 'must make the delegatee object available to the delegator' do
     user = User.new
     user.profile_core.user.must_equal user
   end
 
-  it 'must delegate all instance methods to the delegable' do
+  it 'must delegate all instance methods to the delegatee' do
     User.new.profile_core.type.must_equal :user
   end
 end
